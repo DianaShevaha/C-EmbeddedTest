@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char* argv[])
+{
+    int n;
+    int d;
+    int res;
+
+    if (argc != 3)
+        return (1);
+    n = atoi(argv[1]);
+    d = atoi(argv[2]);
+
+    res = 0;
+
+// n * d + (n - 1) * d + (n - 2) * d + ... + 2 + 1
+// d (n + n - 1 + n - 2 + ... + 2 + 1)
+// n = 6 - pair
+// d (n + n + n + 3)
+// d (6 + 5 + 4 + 3 + 2 + 1)
+// d * n / 2 * n + n / 2
+// d * n / 2 * (n + 1)
+
+// d (n + n - 1 + n - 2 + ... + 2 + 1)
+// n = 5 - not pair
+// d (n + n + n)
+// d * 3 * n
+// d * (n + 1) / 2 * n
+// d (5 + 4 + 3 + 2 + 1)
+
+    if (n % 2 == 0)
+        res = n / 2 * (n + 1) * d;
+    else
+        res = (n + 1) / 2 * n * d;
+    
+    printf("%d\n", res);
+}
